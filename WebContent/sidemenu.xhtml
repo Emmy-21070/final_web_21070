@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>JSF Side Menu Example</title>
+    <h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+
+    <h:form>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="west" width="200" size="200">
+                <p:menu>
+                    <p:menuitem value="Home" action="#{menuBean.goToHome()}" />
+                    <p:menuitem value="Profile" action="#{menuBean.goToProfile()}" />
+                    <p:menuitem value="Settings" action="#{menuBean.goToSettings()}" />
+                    <p:menuitem value="Logout" action="#{menuBean.logout()}" />
+                </p:menu>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <h:outputText value="Welcome to the JSF Application!" />
+                <!-- Include your main content here -->
+                <h:outputText value="#{menuBean.currentView}" />
+            </p:layoutUnit>
+        </p:layout>
+    </h:form>
+
+</h:body>
+</html>

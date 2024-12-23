@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="/admin/layout.xhtml">
+		<ui:define name="content">
+			<div class="row">
+				<div class="col-md-10" style="margin-top: 10px">
+					<h6>USERS LIST</h6>
+					<p:dataTable value="#{userController.users}" var="vaar" paginator="true" rows="5"
+						class="table">
+						<p:column headerText="Full Names" style="width:35%">
+        						<h:outputText value="#{vaar.firstName} #{vaar.lastName}" />
+    					</p:column>
+    					<p:column headerText="Username">
+        						<h:outputText value="#{vaar.user_name}" />
+    					</p:column>
+    					<p:column headerText="is Active">
+        						<h:outputText value="#{vaar.isActive}" />
+    					</p:column>
+    					<p:column headerText="Role">
+        						<h:outputText value="#{vaar.role}" />
+    					</p:column>
+					
+					</p:dataTable>
+				</div>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="/admin/layout.xhtml">
+		<ui:define name="content">
+			<div class="row">
+				<div class="col-md-5" style="margin-top: 10px">
+					<h6>CREATE NEW TYPE</h6>
+					<h:form>
+						<h:panelGrid columns="2">
+							<h:outputLabel for="unim" value="Name" />
+							<h:inputText id="unim" value="#{adminController.membershipType.membership_name}"
+								required="true" />
+								<h:outputLabel for="unmi" value="Price" />
+							<h:inputText id="unmi" value="#{adminController.membershipType.membership_price}"
+								required="true" />
+								<h:outputLabel for="uni" value="Maxmum Book to borrow" />
+							<h:inputText id="uni" value="#{adminController.membershipType.max_books}"
+								required="true" />
+						</h:panelGrid>
+
+						<div style="margin-top: 10px">
+							<div class="col-md-3">
+								<h:commandButton action="#{adminController.createMembershipType()}"
+									class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+									value="Register"></h:commandButton>
+							</div>
+						</div>
+					</h:form>
+				</div>
+				<div class="col-md-7" style="margin-top: 10px">
+					<h6>MEMBERSHIPS LIST</h6>
+					<h:dataTable value="#{adminController.membershipTypes}" var="vaar"
+						class="table">
+						<h:column>
+							<f:facet name="header">Name</f:facet>
+                    #{vaar.membership_name}
+                </h:column>
+                <h:column>
+							<f:facet name="header">Max Books</f:facet>
+                    #{vaar.max_books}
+                </h:column>
+                <h:column>
+							<f:facet name="header">Price</f:facet>
+                    #{vaar.membership_price}
+                </h:column>
+                <h:column>
+                <f:facet name="header">Memberships</f:facet>
+							<h:form>
+							
+							<div class="row">
+							<h:commandButton action="#{adminController.typeContents(vaar.membership_type_id)}"
+									class="col-md-4 btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+									value="View"></h:commandButton>
+							</div>
+							</h:form>
+
+                </h:column>
+					</h:dataTable>
+				</div>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
+
